@@ -2,9 +2,15 @@ package main
 
 import (
 	"github.com/YrWaifu/pet-ptoj/internal/config"
+	"github.com/YrWaifu/pet-ptoj/internal/http-server/handlers/url/save"
 	"github.com/YrWaifu/pet-ptoj/internal/lib/logger/sl"
+	"github.com/YrWaifu/pet-ptoj/internal/lib/logger/slogpretty"
 	"github.com/YrWaifu/pet-ptoj/internal/storage/sqlite"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"log/slog"
+	"net/http"
+
 	"os"
 )
 
@@ -30,10 +36,31 @@ func main() {
 
 	_ = storage
 
-	// todo: init router: chi, "chi render"
+	router := chi.NewRouter()
 
-	// todo: run server:
+	//router.Use(middleware.RequestID)
+	//router.Use(middleware.Logger)
+	//router.Use(mwLogger.New(log))
+	router.Use(middleware.Recoverer)
+	router.Use(middleware.URLFormat)
 
+	router.Post("/url", save.New(log, storage))
+
+	log.Info("starting server", slog.String("address", cfg.HTTPServer.Address))
+
+	srv := &http.Server{
+		Addr:         cfg.HTTPServer.Address,
+		Handler:      router,
+		ReadTimeout:  cfg.HTTPServer.Timeout,
+		WriteTimeout: cfg.HTTPServer.Timeout,
+		IdleTimeout:  cfg.HTTPServer.IdleTimeout,
+	}
+
+	if err := srv.ListenAndServe(); err != nil {
+		log.Error("failed to start server", sl.Err(err))
+	}
+
+	log.Error("server stopped")
 }
 
 func setupLogger(env string) *slog.Logger {
@@ -41,7 +68,7 @@ func setupLogger(env string) *slog.Logger {
 
 	switch env {
 	case envLocal:
-		log = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
+		log = setupPrettySlog()
 	case envDev:
 		log = slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 	case envProd:
@@ -49,4 +76,16 @@ func setupLogger(env string) *slog.Logger {
 	}
 
 	return log
+}
+
+func setupPrettySlog() *slog.Logger {
+	opts := slogpretty.PrettyHandlerOptions{
+		SlogOpts: &slog.HandlerOptions{
+			Level: slog.LevelDebug,
+		},
+	}
+
+	handler := opts.NewPrettyHandler(os.Stdout)
+
+	return slog.New(handler)
 }
