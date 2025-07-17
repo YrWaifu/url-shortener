@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="storage" uuid="309b045b-fcdc-4725-977a-fcff09cb494d">
+    <data-source source="LOCAL" name="storage" uuid="f172ad7a-e1cc-4e95-91a2-fe6aa9be831a">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Cods\pet-ptoj\storage\storage.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/storage/storage.db</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
       </jdbc-additional-properties>
