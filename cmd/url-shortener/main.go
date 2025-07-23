@@ -1,13 +1,13 @@
 package main
 
 import (
-	"github.com/YrWaifu/pet-ptoj/internal/config"
-	deleteURL "github.com/YrWaifu/pet-ptoj/internal/http-server/handlers/url/delete"
-	"github.com/YrWaifu/pet-ptoj/internal/http-server/handlers/url/redirect"
-	"github.com/YrWaifu/pet-ptoj/internal/http-server/handlers/url/save"
-	"github.com/YrWaifu/pet-ptoj/internal/lib/logger/sl"
-	"github.com/YrWaifu/pet-ptoj/internal/lib/logger/slogpretty"
-	"github.com/YrWaifu/pet-ptoj/internal/storage/sqlite"
+	"github.com/YrWaifu/url-shortener/internal/config"
+	deleteURL "github.com/YrWaifu/url-shortener/internal/http-server/handlers/url/delete"
+	"github.com/YrWaifu/url-shortener/internal/http-server/handlers/url/redirect"
+	"github.com/YrWaifu/url-shortener/internal/http-server/handlers/url/save"
+	"github.com/YrWaifu/url-shortener/internal/lib/logger/sl"
+	"github.com/YrWaifu/url-shortener/internal/lib/logger/slogpretty"
+	"github.com/YrWaifu/url-shortener/internal/storage/sqlite"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"log/slog"

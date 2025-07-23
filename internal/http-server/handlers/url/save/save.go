@@ -2,10 +2,10 @@ package save
 
 import (
 	"errors"
-	"github.com/YrWaifu/pet-ptoj/internal/lib/api/response"
-	"github.com/YrWaifu/pet-ptoj/internal/lib/logger/sl"
-	"github.com/YrWaifu/pet-ptoj/internal/lib/random"
-	"github.com/YrWaifu/pet-ptoj/internal/storage"
+	"github.com/YrWaifu/url-shortener/internal/lib/api/response"
+	"github.com/YrWaifu/url-shortener/internal/lib/logger/sl"
+	"github.com/YrWaifu/url-shortener/internal/lib/random"
+	"github.com/YrWaifu/url-shortener/internal/storage"
 	"github.com/go-chi/render"
 	"github.com/go-playground/validator"
 	"log/slog"

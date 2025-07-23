@@ -1,4 +1,4 @@
-module github.com/YrWaifu/pet-ptoj
+module github.com/YrWaifu/url-shortener
 
 go 1.24.4
 

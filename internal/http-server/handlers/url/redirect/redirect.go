@@ -3,7 +3,7 @@ package redirect
 import (
 	"database/sql"
 	"errors"
-	"github.com/YrWaifu/pet-ptoj/internal/lib/api/response"
+	"github.com/YrWaifu/url-shortener/internal/lib/api/response"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
 	"log/slog"

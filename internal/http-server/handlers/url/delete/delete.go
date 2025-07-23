@@ -1,8 +1,8 @@
 package delete
 
 import (
-	"github.com/YrWaifu/pet-ptoj/internal/lib/api/response"
-	"github.com/YrWaifu/pet-ptoj/internal/lib/logger/sl"
+	"github.com/YrWaifu/url-shortener/internal/lib/api/response"
+	"github.com/YrWaifu/url-shortener/internal/lib/logger/sl"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
 	"log/slog"

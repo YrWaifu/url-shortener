@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/YrWaifu/pet-ptoj/internal/storage"
+	"github.com/YrWaifu/url-shortener/internal/storage"
 	"github.com/mattn/go-sqlite3"
 )
 
